@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Catálogo | Miguel Castillo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1e1e1e;
+            --bg-light: #292929;
+            --bg-card: #222222;
+            --accent: #e59e35;
+            --text-main: #ffffff;
+            --text-muted: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid #333;
+        }
+
+        .logo { font-size: 24px; font-weight: 700; color: var(--accent); }
+        .nav-links { list-style: none; display: flex; gap: 30px; align-items: center; }
+        .nav-links li a {
+            text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 400; transition: color 0.3s ease;
+        }
+        .nav-links li a:hover { color: var(--accent); }
+        
+        .linkedin-icon svg { width: 24px; height: 24px; fill: var(--text-main); transition: fill 0.3s ease, transform 0.3s ease; }
+        .linkedin-icon:hover svg { fill: var(--accent); transform: scale(1.1); }
+
+        /* --- CATÁLOGO / PORTAFOLIO --- */
+        .portfolio-section {
+            padding: 50px 8% 80px 8%;
+            background-color: var(--bg-light);
+            min-height: 100vh;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; margin-bottom: 5px;
+        }
+        .section-subtitle::before { content: ""; display: inline-block; width: 30px; height: 1px; background-color: var(--accent); }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; color: var(--text-main); }
+
+        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        .portfolio-card {
+            background-color: var(--bg-dark); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-left: 4px solid var(--accent);
+        }
+        .portfolio-content { padding: 40px; }
+        .portfolio-content h3 { font-size: 24px; color: var(--text-main); margin-bottom: 10px; }
+        .portfolio-tags { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tag { background-color: #333; color: var(--accent); padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; }
+        .portfolio-text { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; }
+
+        /* Botón de enlace directo */
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover { background-color: var(--accent); color: var(--bg-dark); }
+
+        /* --- NUEVO DISEÑO PARA IMÁGENES --- */
+        .block-section {
+            margin-bottom: 50px;
+            background-color: #111;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .block-section h4 { color: var(--text-main); font-size: 18px; margin-bottom: 25px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        .image-wrapper {
+            margin-bottom: 40px;
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            border: 1px solid #333;
+            display: block;
+        }
+        .image-caption {
+            background-color: #1a1a1a;
+            color: var(--text-muted);
+            font-size: 14px;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            border-left: 3px solid var(--accent);
+            margin-top: -5px; /* Para que se una visualmente a la imagen */
+        }
+
+        /* Bloque de Código VBA */
+        .code-block { background-color: #0d0d0d; padding: 20px; border-radius: 5px; border-left: 3px solid #4da6ff; overflow-x: auto; font-family: monospace; color: #d4d4d4; font-size: 13px; line-height: 1.5; margin-top: 20px;}
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav>
+        <div class="logo">MACV.</div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Inicio</a></li>
+            <li><a href="index.html#about">Sobre Mí</a></li>
+            <li><a href="index.html#resume">Experiencia</a></li>
+            <li><a href="catalogo.html" style="color: var(--accent);">Catálogo / Proyectos</a></li>
+            <li>
+                <a href="https://www.linkedin.com/in/miguel-angel-castillo-velez-a56898348" target="_blank" class="linkedin-icon" title="Ver perfil de LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CATÁLOGO / PORTAFOLIO -->
+    <section class="portfolio-section" id="portfolio">
+        <span class="section-subtitle">MY PORTFOLIO</span>
+        <h2 class="section-title">Catálogo de Estructuración y M&A</h2>
+        
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-card">
+                <div class="portfolio-content">
+                    <h3>Adquisición Proyecto Atlas (Infraestructura B2B)</h3>
+                    
+                    <div class="portfolio-tags">
+                        <span class="tag">Corporate Finance</span>
+                        <span class="tag">Financial Modeling</span>
+                        <span class="tag">VBA Automation</span>
+                    </div>
+
+                    <p class="portfolio-text">
+                        Análisis integral de viabilidad para adquisición corporativa. Evaluación de Flujos de Caja (FCFF/FCFE), optimización de costo de capital (WACC) y estructuración de mitigación de riesgo cambiario (Contrato Forward EUR/USD). Se incluye Codigo en VBA para evaluación de escenarios en tiempo real.
+                    </p>
+
+                    <!-- ========================================== -->
+                    <!-- BLOQUE 1: PRESENTACIÓN EJECUTIVA (4 SLIDES)-->
+                    <!-- ========================================== -->
+                    <div class="block-section">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                            <h4>📊 Teaser Ejecutivo (Pitch)</h4>
+                            <!-- Puedes dejar este botón si quieres enlazar el PDF real, si no, puedes borrar esta línea de la etiqueta <a> -->
+                            <a href="https://1drv.ms/p/c/29302229593d0670/IQCBbWSzyHCxSLUP5T8ch9MtAYERKC3oJJnmMevrcZYgRsw?e=iUOI7a" target="_blank" class="btn-outline">Abir PPTX en nueva Pestaña ↗</a>
+                        </div>
+                        
+                        <!-- Imagen Slide 1 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_1.jpg" alt="Slide 1 Proyecto Atlas">
+                            <div class="image-caption">
+                                <strong>Contexto de la Transacción:</strong> Resumen de la estructura de capital, condiciones operativas y Proyecciones.
+                            </div>
+                        </div>
+
+                        <!-- Imagen Slide 2 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_2.jpg" alt="Slide 2 Proyecto Atlas">
+                            <div class="image-caption">
+                                <strong>Riesgo Macro y FX:</strong> Variables Macro-Economicas/Financiera que contriuyen a la destruciòn de valor.
+                            </div>
+                        </div>
+
+                        <!-- Imagen Slide 3 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_3.jpg" alt="Slide 3 Proyecto Atlas">
+                            <div class="image-caption">
+                                <strong>Estructra y Solucion:</strong> Causa/Acciòn.
+                            </div>
+                        </div>
+
+                        <!-- Imagen Slide 4 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_4.jpg" alt="Slide 4 Proyecto Atlas">
+                            <div class="image-caption">
+                                <strong>Diferenciador Tecnológico:</strong> Matriz de Impacto Financiero.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- ========================================== -->
+                    <!-- BLOQUE 2: MODELO FINANCIERO EXCEL (3 VISTAS)-->
+                    <!-- ========================================== -->
+                    <div class="block-section">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                            <h4>📈 Arquitectura del Modelo Financiero</h4>
+                            <a href="https://1drv.ms/x/c/29302229593d0670/IQB1jC8U8avpSK1xS4AqSOP9AdO-00ZaN48ccI2pe4hSY4U?e=7t2dlt" target="_blank" class="btn-outline">Abrir Excel Original ↗</a>
+                        </div>
+                        
+                        <!-- Imagen Excel 1 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_5.jpg" alt="Supuestos Excel">
+                            <div class="image-caption">
+                                <strong>Drivers y Supuestos:</strong> Panel de control principal con inputs variables para sensibilizar el modelo operativo y las tasas impositivas.
+                            </div>
+                        </div>
+
+                        <!-- Imagen Excel 1.1 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_6.jpg" alt="Supuestos Excel">
+                            <div class="image-caption">
+                                <strong>Drivers y Supuestos:</strong> Proyecciones e Inversion.
+                            </div>
+                        </div>
+
+                        <!-- Imagen Excel .2 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_7.jpg" alt="Supuestos Excel">
+                            <div class="image-caption">
+                                <strong>Drivers y Supuestos:</strong> Servicio de la deuda proyectada .
+                            </div>
+                        </div>
+
+                        <!-- Imagen Excel 2 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_8.jpg" alt="P&L Excel">
+                            <div class="image-caption">
+                                <strong>Estado de Resultados Proyectado:</strong> Estructuración del P&L a 5 años evidenciando crecimiento de EBITDA.
+                            </div>
+                        </div>
+
+                        <!-- Imagen Excel 3 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_9.jpg" alt="FCF Excel">
+                            <div class="image-caption">
+                                <strong>Flujo de Caja Libre:</strong> Detalle del cálculo de FCFE descontado, evidenciando el impacto de la amortización de capital en el VPN final.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- ========================================== -->
+                    <!-- BLOQUE 3: AUTOMATIZACIÓN VBA (2 IMÁGENES + CÓDIGO)-->
+                    <!-- ========================================== -->
+                    <div class="block-section">
+                        <h4>⚙️ Motor de Sensibilidad (Visual Basic)</h4>
+                        
+                        <!-- Imagen VBA 1 -->
+                        <div class="image-wrapper">
+                            <img src="VALORACION PPROYECTOS_10.jpg" alt="Matriz Sensibilidad">
+                            <div class="image-caption">
+                                <strong>Output del Motor:</strong> Matriz de sensibilidad bidimensional generada dinámicamente. Los cuadrantes verdes indican escenarios de rentabilidad viable.
+                            </div>
+                        </div>
+
+                        <!-- Código VBA -->
+                        <p class="portfolio-text" style="font-size: 13px; margin-bottom: 10px; margin-top: 30px;">
+                            <strong>Script de Ejecución:</strong> A continuación se detalla la lógica iterativa desarrollada en VBA para inyectar variables en el modelo en tiempo real.
+                        </p>
+                        <div class="code-block">
+<pre><code>'Sub MatrizSensibilidadBancaInversion()
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+    
+    Dim wsDrivers As Worksheet
+    Dim wsDCF As Worksheet
+    Dim wsSens As Worksheet
+    Dim originalCapex As Double
+    Dim originalRate As Double
+    Dim i As Integer, j As Integer
+    
+    ' 1. Mapeo exacto de hojas
+    Set wsDrivers = ThisWorkbook.Sheets("Drivers & Assumptions")
+    Set wsDCF = ThisWorkbook.Sheets("DCF")
+    Set wsSens = ThisWorkbook.Sheets("Senstiivities & VBA")
+    
+    ' 2. Guardar variables base
+    originalCapex = wsDrivers.Range("P23").Value
+    originalRate = wsDrivers.Range("P33").Value
+    
+    ' 3. Limpiar hoja de sensibilidad y crear el lienzo
+    wsSens.Cells.Clear
+    wsSens.Range("B2").Value = "MATRIZ DE SENSIBILIDAD: VPN DEL ACCIONISTA (USD M)"
+    wsSens.Range("B2").Font.Bold = True
+    wsSens.Range("B4").Value = "CapEx \ Tasa"
+    wsSens.Range("B4").Font.Bold = True
+    
+    Dim arrCapex As Variant: arrCapex = Array(100, 110, 120, 130, 140)
+    Dim arrRate As Variant: arrRate = Array(0.045, 0.055, 0.065, 0.075, 0.085)
+    
+    ' Imprimir encabezados de tasas
+    For j = 0 To UBound(arrRate)
+        wsSens.Cells(4, 3 + j).Value = arrRate(j)
+        wsSens.Cells(4, 3 + j).NumberFormat = "0.0%"
+        wsSens.Cells(4, 3 + j).Font.Bold = True
+    Next j
+    
+    ' 4. Bucle de Iteración Cruzada
+    For i = 0 To UBound(arrCapex)
+        wsSens.Cells(5 + i, 2).Value = arrCapex(i)
+        wsSens.Cells(5 + i, 2).Font.Bold = True
+        
+        For j = 0 To UBound(arrRate)
+            ' Inyectar escenarios
+            wsDrivers.Range("P23").Value = arrCapex(i)
+            wsDrivers.Range("P33").Value = arrRate(j) (...)'
+</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</body>
+</html>
